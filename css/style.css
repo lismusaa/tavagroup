@@ -1,4 +1,4 @@
-/* General reset */
+/* --------------------- General Reset --------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +7,12 @@
 }
 
 body {
-  background-color: #fff;
+  background-color: #fffaf5;
   color: #333;
+  line-height: 1.6;
 }
 
-/* Navbar */
+/* --------------------- Navbar --------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -21,7 +22,8 @@ body {
   color: white;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
 .navbar .logo {
@@ -33,40 +35,62 @@ body {
   margin-left: 1.5rem;
   text-decoration: none;
   font-weight: 500;
+  position: relative;
   transition: 0.3s;
 }
 
 .navbar nav a:hover,
 .navbar nav a.active {
-  border-bottom: 2px solid white;
+  color: #fffaf5;
 }
 
-/* Hero */
-.hero {
-  background: url("../images/hero.jpg") center/cover no-repeat;
+.navbar nav a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0;
+  background: white;
+  transition: 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+}
+
+.navbar nav a:hover::after,
+.navbar nav a.active::after {
+  width: 100%;
+}
+
+/* --------------------- Hero Sections --------------------- */
+.hero,
+.products-hero,
+.about-hero,
+.contact-hero {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url("../images/hero.jpg") center/cover no-repeat;
   color: white;
   text-align: center;
-  padding: 150px 20px;
+  padding: 140px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.hero-text {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 40px;
-  border-radius: 15px;
-  max-width: 700px;
-}
-
-.hero h1 {
+.hero h1,
+.products-hero h1,
+.about-hero h1,
+.contact-hero h1 {
   font-size: 2.8rem;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
-.hero p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
+.hero p,
+.products-hero p,
+.about-hero p,
+.contact-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
 .btn {
@@ -77,6 +101,7 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
+  display: inline-block;
 }
 
 .btn:hover {
@@ -84,69 +109,34 @@ body {
   background: linear-gradient(to right, #ffc97e, #a05c25);
 }
 
-/* Features */
+/* --------------------- Features --------------------- */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  padding: 50px 5%;
+  padding: 60px 5%;
   gap: 30px;
   text-align: center;
 }
 
 .feature {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transition: 0.3s;
 }
 
 .feature:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #f5f5f5;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero {
-    padding: 100px 20px;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .navbar nav a {
-    margin-left: 1rem;
-  }
-}
-
-
-/* Hero sections for each page */
-.products-hero, .about-hero, .contact-hero {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../images/hero.jpg") center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 120px 20px;
-}
-
-.products-hero h1, .about-hero h1, .contact-hero h1 {
-  font-size: 2.5rem;
+.feature h3 {
   margin-bottom: 10px;
+  color: #8b4513;
 }
 
-.products-hero p, .about-hero p, .contact-hero p {
-  font-size: 1.1rem;
-}
-
-/* Product grid */
+/* --------------------- Products Grid --------------------- */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -155,10 +145,10 @@ footer {
 }
 
 .product-card {
-  background: white;
-  border-radius: 10px;
+  background: #fff;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   transition: 0.3s;
   text-align: center;
 }
@@ -167,23 +157,32 @@ footer {
   width: 100%;
   height: 200px;
   object-fit: cover;
+  transition: 0.3s;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
 }
 
-/* About content */
+.product-card h3 {
+  margin: 15px 0 10px;
+  color: #8b4513;
+}
+
+/* --------------------- About Section --------------------- */
 .about-content {
   max-width: 900px;
   margin: 40px auto;
   padding: 0 5%;
-  line-height: 1.7;
   font-size: 1rem;
 }
 
-/* Contact content */
+/* --------------------- Contact Section --------------------- */
 .contact-content {
   display: flex;
   flex-wrap: wrap;
@@ -195,23 +194,25 @@ footer {
 .contact-form {
   flex: 1;
   min-width: 300px;
-  max-width: 400px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.contact-form input, .contact-form textarea {
-  padding: 12px;
-  border-radius: 8px;
+.contact-form input,
+.contact-form textarea {
+  padding: 14px;
+  border-radius: 10px;
   border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 .contact-form button {
   background: linear-gradient(to right, #ffb347, #8b4513);
   color: white;
   border: none;
-  padding: 12px;
+  padding: 14px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: 600;
@@ -227,15 +228,96 @@ footer {
   flex: 1;
   min-width: 250px;
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
-/* Responsive */
+/* --------------------- Footer --------------------- */
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #f5f5f5;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 40px;
+}
+
+/* --------------------- Responsive --------------------- */
 @media (max-width: 768px) {
+  .hero,
+  .products-hero,
+  .about-hero,
+  .contact-hero {
+    padding: 100px 20px;
+  }
+
+  .hero h1,
+  .products-hero h1,
+  .about-hero h1,
+  .contact-hero h1 {
+    font-size: 2rem;
+  }
+
   .contact-content {
     flex-direction: column;
   }
-  .hero h1, .products-hero h1, .about-hero h1, .contact-hero h1 {
-    font-size: 2rem;
+}
+
+/* --------------------- Why Choose Section --------------------- */
+.why-choose {
+  background: #fffaf5;
+  padding: 60px 5%;
+  text-align: center;
+}
+
+.why-choose h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #8b4513;
+}
+
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.choose-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.choose-card img {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.choose-card h3 {
+  margin-bottom: 10px;
+  color: #ff8c42; /* light orange accent */
+}
+
+.choose-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.choose-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .choose-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .choose-grid {
+    grid-template-columns: 1fr;
   }
 }
