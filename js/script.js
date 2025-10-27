@@ -9,3 +9,6 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+
+
+console.log("TavaGroup website loaded successfully.");
